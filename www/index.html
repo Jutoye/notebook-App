@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ur"><head><meta charset="utf-8"><title>Pardhan Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam&family=Patrick+Hand&family=Indie+Flower&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#e9dcc0;--card:#fffdf4;--tx:#1b2f6b;--mu:#7a6a4d;--ac:#7b3f1d;--ac2:#f3e2c2;--bd:#e0d2ae;--dn:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a2118;--card:#3a2f22;--tx:#cfdcff;--mu:#b5a78c;--ac:#d9a066;--ac2:#4a3a28;--bd:#4d4030;--dn:#ff8a80}.btn.p,.fab{color:#fff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:22px 'Caveat','Noto Nastaliq Urdu',cursive,system-ui,sans-serif;padding-bottom:90px}button,input,textarea{font-family:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--ac);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;z-index:5}
+header h1{font-size:18px;margin:0;flex:1}header button{background:none;border:0;color:#fff;font-size:22px}
+.tabs{display:flex;background:var(--card);border-bottom:1px solid var(--bd)}
+.tabs button{flex:1;padding:12px;border:0;background:none;color:var(--mu);font-size:15px;border-bottom:3px solid transparent}
+.tabs button.on{color:var(--ac);border-color:var(--ac);font-weight:600}
+.wrap{padding:12px;max-width:640px;margin:auto}
+input,textarea{width:100%;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;margin-bottom:10px}
+textarea{min-height:280px;resize:vertical;line-height:32px;font-size:24px;padding:4px 12px 4px 52px;border:0;border-radius:4px;background-color:var(--card);background-image:linear-gradient(90deg,transparent 42px,#d9534f88 42px,#d9534f88 44px,transparent 44px),repeating-linear-gradient(var(--card) 0,var(--card) 31px,#7fa6d977 31px,#7fa6d977 32px);background-attachment:local;box-shadow:0 2px 6px #0003}
+.note{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:10px}
+.note b{display:block}.note small{color:var(--mu)}
+.badge{display:inline-block;background:var(--ac2);color:var(--ac);border-radius:20px;padding:2px 8px;font-size:12px;margin-right:4px}
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:30px;box-shadow:0 4px 12px #0004}
+.btn{padding:11px 14px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;margin:0 6px 8px 0}
+.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}.btn.d{color:var(--dn)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px}
+.cal div{text-align:center;padding:10px 0;border-radius:10px;font-size:20px;position:relative}
+.cal .h{color:var(--mu);font-size:12px;padding:4px 0}
+.cal .d{background:var(--card);border:1px solid var(--bd)}
+.cal .d.has::after{content:"";position:absolute;bottom:4px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--ac)}
+.cal .d.sel{background:var(--ac);color:#fff}.cal .d.today{border-color:var(--ac);font-weight:700}
+.nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.nav b{font-size:17px}
+.imgs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.imgs .im{position:relative}.imgs img{width:96px;height:96px;object-fit:cover;border-radius:10px;border:1px solid var(--bd)}
+.x{position:absolute;top:-6px;right:-6px;background:var(--dn);color:#fff;border:0;border-radius:50%;width:24px;height:24px}
+.au{display:flex;align-items:center;gap:6px;margin-bottom:8px}.au audio{flex:1;min-width:0}
+h3{margin:14px 0 8px;font-size:22px;color:var(--mu)}
+header{background:linear-gradient(135deg,var(--h1,#5a2d12),var(--h2,#8a4a24))!important;border-bottom:3px dashed #e8c98f;color:#fff}header h1{font-size:30px!important;letter-spacing:1px}
+.tabs button{font-size:24px}.btn{font-size:20px}
+.note{background:var(--card);border-left:5px solid #d9534f99;box-shadow:0 2px 6px #0002}.note b{font-size:26px;line-height:1.1}.note small{font-size:18px}
+input{font-size:22px;border-color:var(--bd);border-radius:6px}
+#big{position:fixed;inset:0;background:#000e;display:none;align-items:center;justify-content:center;z-index:20}#big img{max-width:100%;max-height:100%}
+.empty{text-align:center;color:var(--mu);padding:40px 10px}
+body{background-size:cover;background-attachment:fixed;background-position:center}body.ln-plain textarea{background-image:none!important}body.ln-grid textarea{background-image:linear-gradient(#7fa6d966 1px,transparent 1px),linear-gradient(90deg,#7fa6d966 1px,transparent 1px)!important;background-size:32px 32px!important}#gear{background:none;border:0;color:#fff;font-size:24px}#pv{position:fixed;inset:0;background:#333;z-index:30;display:none;overflow:auto}.pbar{position:sticky;top:0;background:#000c;padding:8px;padding-top:calc(8px + env(safe-area-inset-top,0px))}.pbar button{background:#fff;border:0;border-radius:8px;padding:8px 14px;font-size:18px}
+</style></head><body>
+<header><button id="back" style="display:none">←</button><h1 id="ttl">📒 Meri Notebook</h1><button id="gear">⚙</button></header>
+<div id="app"></div><div id="big"><img></div><div id="pv"></div>
+<script>
+var DB,notes=[],view="list",tab="list",cur=null,sel=null,cm=new Date(),q="",rec=null,urls=[];
+var MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function $(s){return document.querySelector(s)}
+function esc(s){return (s||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function today(){return ymd(new Date())}
+function url(b){var u=URL.createObjectURL(b);urls.push(u);return u}
+function open(){return new Promise(function(r,j){var q=indexedDB.open("pardhan-notebook",1);q.onupgradeneeded=function(){q.result.createObjectStore("notes",{keyPath:"id"})};q.onsuccess=function(){r(q.result)};q.onerror=j})}
+function all(){return new Promise(function(r){var q=DB.transaction("notes").objectStore("notes").getAll();q.onsuccess=function(){r(q.result)}})}
+function put(n){return new Promise(function(r){var t=DB.transaction("notes","readwrite");t.objectStore("notes").put(n);t.oncomplete=r})}
+function del(id){return new Promise(function(r){var t=DB.transaction("notes","readwrite");t.objectStore("notes").delete(id);t.oncomplete=r})}
+async function load(){notes=(await all()).sort(function(a,b){return b.date.localeCompare(a.date)||b.created-a.created})}
+function card(n){return '<div class="note" onclick="edit(\''+n.id+'\')"><b>'+esc(n.title||"Bina title")+'</b><small>'+n.date+(n.client?" · "+esc(n.client):"")+'</small><div style="margin-top:6px">'+(n.images.length?'<span class="badge">🖼 '+n.images.length+'</span>':'')+(n.audios.length?'<span class="badge">🎙 '+n.audios.length+'</span>':'')+((n.pdfs||[]).length?'<span class="badge">📄 '+n.pdfs.length+'</span>':'')+'</div></div>'}
+function setHead(t,back){$("#ttl").textContent=t;$("#back").style.display=back?"block":"none";$("#gear").style.display=back?"none":"block"}
+function render(){
+ urls.forEach(URL.revokeObjectURL);urls=[];var h="";
+ if(view=="edit"){return renderEdit()}if(view=="set"){return renderSet()}
+ setHead("📒 Meri Notebook",false);
+ h+='<div class="tabs"><button class="'+(tab=="list"?"on":"")+'" onclick="tab=\'list\';render()">Notes</button><button class="'+(tab=="cal"?"on":"")+'" onclick="tab=\'cal\';render()">Calendar</button></div><div class="wrap">';
+ if(tab=="list"){
+  var l=notes.filter(function(n){var s=(n.title+n.client+n.text).toLowerCase();return s.indexOf(q.toLowerCase())>-1});
+  h+='<input id="s" placeholder="Search (naam, title, detail)" value="'+esc(q)+'" oninput="q=this.value;lst()"><div id="L">'+(l.length?l.map(card).join(""):'<div class="empty">Abhi koi note nahi. Neeche + dabayen.</div>')+'</div>';
+ }else{
+  var y=cm.getFullYear(),m=cm.getMonth(),f=new Date(y,m,1).getDay(),dn=new Date(y,m+1,0).getDate(),has={};
+  notes.forEach(function(n){has[n.date]=1});
+  h+='<div class="nav"><button class="btn" onclick="mv(-1)">◀</button><b>'+MN[m]+' '+y+'</b><button class="btn" onclick="mv(1)">▶</button></div><div class="cal">';
+  "SMTWTFS".split("").forEach(function(c){h+='<div class="h">'+c+'</div>'});
+  for(var i=0;i<f;i++)h+='<div></div>';
+  for(var d=1;d<=dn;d++){var k=y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");h+='<div class="d'+(has[k]?" has":"")+(k==sel?" sel":"")+(k==today()?" today":"")+'" onclick="sel=\''+k+'\';render()">'+d+'</div>'}
+  h+='</div><button class="btn" onclick="cm=new Date();sel=today();render()">Aaj</button>';
+  if(sel){var dl=notes.filter(function(n){return n.date==sel});h+='<h3>'+sel+'</h3>'+(dl.length?dl.map(card).join(""):'<div class="empty">Is din koi note nahi</div>')+'<button class="btn p" onclick="add(sel)">+ Is din ka note</button>'}
+ }
+ h+='</div>'+(tab=="list"?'<button class="fab" onclick="add()">+</button>':'');
+ $("#app").innerHTML=h;
+}
+function lst(){var l=notes.filter(function(n){return(n.title+n.client+n.text).toLowerCase().indexOf(q.toLowerCase())>-1});$("#L").innerHTML=l.length?l.map(card).join(""):'<div class="empty">Kuch nahi mila</div>'}
+function mv(d){cm=new Date(cm.getFullYear(),cm.getMonth()+d,1);render()}
+function add(d){cur={id:"n"+Date.now(),title:"",client:"",date:d||today(),text:"",images:[],audios:[],pdfs:[],created:Date.now(),isNew:true};view="edit";render()}
+function edit(id){cur=notes.find(function(n){return n.id==id});cur.pdfs=cur.pdfs||[];view="edit";render()}
+function renderEdit(){
+ setHead(cur.isNew?"Naya Note":"Note",true);
+ var h='<div class="wrap"><input id="t" placeholder="Title (jaise: Plot 5 Marla - Ali)" value="'+esc(cur.title)+'"><input id="c" placeholder="Client ka naam / phone" value="'+esc(cur.client)+'"><input id="d" type="date" value="'+cur.date+'"><textarea id="x" placeholder="Property ki detail, shartain, rates...">'+esc(cur.text)+'</textarea>';
+ h+='<h3>Images (ID card, documents)</h3><div class="imgs">'+cur.images.map(function(b,i){return '<div class="im"><img src="'+url(b)+'" onclick="zoom('+i+')"><button class="x" onclick="rmI('+i+')">×</button></div>'}).join("")+'</div>';
+ h+='<button class="btn" onclick="$(\'#cam\').click()">📷 Camera</button><button class="btn" onclick="$(\'#gal\').click()">🖼 Gallery</button>';
+ h+='<input id="cam" type="file" accept="image/*" capture="environment" hidden><input id="gal" type="file" accept="image/*" multiple hidden>';
+ h+='<h3>PDF</h3>'+cur.pdfs.map(function(b,i){return '<div class="au"><button class="btn" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" onclick="showPdf('+i+')">📄 '+esc(b.name||"file.pdf")+'</button><button class="x" style="position:static" onclick="rmP('+i+')">×</button></div>'}).join("")+'<button class="btn" onclick="$(\'#pf\').click()">📄 PDF add karen</button><input id="pf" type="file" accept="application/pdf" multiple hidden>';
+ h+='<h3>Audio</h3>'+cur.audios.map(function(b,i){return '<div class="au"><audio controls src="'+url(b)+'"></audio><button class="x" style="position:static" onclick="rmA('+i+')">×</button></div>'}).join("");
+ h+='<button class="btn" id="rb" onclick="recT()">'+(rec?"⏹ Stop":"🎙 Record")+'</button><button class="btn" onclick="$(\'#af\').click()">📁 Audio file</button><input id="af" type="file" accept="audio/*" hidden>';
+ h+='<div style="margin-top:14px"><button class="btn p" onclick="save()">💾 Save</button>'+(cur.isNew?'':'<button class="btn d" onclick="rm()">🗑 Delete</button>')+'</div></div>';
+ $("#app").innerHTML=h;
+ $("#cam").onchange=$("#gal").onchange=function(){keep();for(var i=0;i<this.files.length;i++)cur.images.push(this.files[i]);renderEdit()};
+ $("#af").onchange=function(){keep();if(this.files[0])cur.audios.push(this.files[0]);renderEdit()};
+ $("#pf").onchange=function(){keep();for(var i=0;i<this.files.length;i++)cur.pdfs.push(this.files[i]);renderEdit()};
+}
+function keep(){if(!$("#t"))return;cur.title=$("#t").value;cur.client=$("#c").value;cur.date=$("#d").value||today();cur.text=$("#x").value}
+function rmI(i){keep();cur.images.splice(i,1);renderEdit()}
+function rmA(i){keep();cur.audios.splice(i,1);renderEdit()}
+function rmP(i){keep();cur.pdfs.splice(i,1);renderEdit()}
+function loadPdfJs(){return window.pdfjsLib?Promise.resolve():new Promise(function(r,j){var s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";s.onload=function(){pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";r()};s.onerror=j;document.head.appendChild(s)})}
+async function showPdf(i){keep();var b=cur.pdfs[i],o=$("#pv");o.style.display="block";o.innerHTML='<div class="pbar"><button onclick="$(\'#pv\').style.display=\'none\'">✕ Band</button></div><div id="pg" style="padding:6px;color:#fff">Load ho raha hai...</div>';
+ try{await loadPdfJs();var d=await pdfjsLib.getDocument({data:await b.arrayBuffer()}).promise;$("#pg").innerHTML="";
+ for(var n=1;n<=d.numPages;n++){var pg=await d.getPage(n),vp=pg.getViewport({scale:1}),sc=Math.min(3,(window.innerWidth-12)*(window.devicePixelRatio||1)/vp.width),v=pg.getViewport({scale:sc}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;c.style.cssText="width:100%;display:block;margin-bottom:8px;background:#fff";$("#pg").appendChild(c);await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise}
+ }catch(e){$("#pg").textContent="PDF nahi khul saka (internet chalu rakhen)."}}
+function zoom(i){$("#big img").src=url(cur.images[i]);$("#big").style.display="flex"}
+$("#big").onclick=function(){this.style.display="none"};
+async function recT(){
+ keep();
+ if(rec){rec.stop();return}
+ try{var st=await navigator.mediaDevices.getUserMedia({audio:true}),ch=[],r=new MediaRecorder(st);
+  r.ondataavailable=function(e){ch.push(e.data)};
+  r.onstop=function(){st.getTracks().forEach(function(t){t.stop()});cur.audios.push(new Blob(ch,{type:r.mimeType||"audio/webm"}));rec=null;renderEdit()};
+  r.start();rec=r;renderEdit()
+ }catch(e){alert("Microphone ki ijazat nahi mili. Aap '📁 Audio file' se bhi audio laga sakte hain.")}
+}
+async function save(){keep();if(!cur.title&&!cur.text&&!cur.images.length&&!cur.audios.length&&!cur.pdfs.length){alert("Kuch to likhen");return}
+ delete cur.isNew;await put(cur);await load();view="list";cur=null;render()}
+async function rm(){if(!confirm("Ye note delete karna hai?"))return;await del(cur.id);await load();view="list";cur=null;render()}
+$("#back").onclick=function(){if(rec)rec.stop();view="list";cur=null;render()};
+$("#gear").onclick=function(){view="set";render()};
+var TH={brown:["#5a2d12","#8a4a24","#7b3f1d"],green:["#0b4f38","#1f7a58","#0f6b4b"],blue:["#12306b","#2a56a8","#1d4ba0"],maroon:["#5c1020","#8f2238","#7d1a2e"],black:["#1a1a1a","#3a3a3a","#333333"]};
+var TN={brown:"Bhura",green:"Hara",blue:"Neela",maroon:"Maroon",black:"Kaala"};
+var PG={cream:["#fffdf4","#e9dcc0","#1b2f6b","#7a6a4d","#e0d2ae"],white:["#ffffff","#e6e6e6","#1b2f6b","#6b6b6b","#d9d9d9"],yellow:["#fff7b8","#f1e6a0","#1b2f6b","#7a6f2d","#e6d98a"],pink:["#ffe6ee","#f3d3de","#4a1b3a","#8a4a66","#f0c4d3"],sky:["#e6f1ff","#cfdff3","#12306b","#4a6a94","#bcd3ee"],mint:["#e8f6e8","#d0e6d0","#1b3a2a","#4a7a5a","#b9dbb9"],dark:["#2b2b33","#17171c","#e8e8f0","#aaaab8","#44444f"]};
+var PN={cream:"Cream",white:"Safed",yellow:"Peela",pink:"Gulabi",sky:"Aasmani",mint:"Hara",dark:"Kaala"};
+var INK={auto:["Auto",""],blue:["Neeli","#1b2f6b"],black:["Kaali","#111111"],red:["Laal","#9b1c1c"],green:["Hari","#0b5d3b"]};
+var FN={"Caveat":"Caveat","Kalam":"Kalam","Patrick Hand":"Patrick","Indie Flower":"Indie","Noto Nastaliq Urdu":"Urdu","system-ui":"Seedha"};
+var LN={ruled:"Lines",grid:"Grid",plain:"Saada"};
+var S={theme:"brown",page:"cream",font:"Caveat",ink:"auto",lines:"ruled"};
+try{Object.assign(S,JSON.parse(localStorage.getItem("pn-set")||"{}"))}catch(e){}
+function applyS(){var r=document.documentElement.style,t=TH[S.theme]||TH.brown,p=PG[S.page]||PG.cream,ik=INK[S.ink]&&INK[S.ink][1]?INK[S.ink][1]:p[2];
+ r.setProperty("--h1",t[0]);r.setProperty("--h2",t[1]);r.setProperty("--ac",t[2]);r.setProperty("--card",p[0]);r.setProperty("--bg",p[1]);r.setProperty("--tx",ik);r.setProperty("--mu",p[3]);r.setProperty("--bd",p[4]);r.setProperty("--ac2",p[4]);
+ document.body.style.fontFamily=S.font=="system-ui"?"system-ui,sans-serif":"'"+S.font+"','Noto Nastaliq Urdu',cursive,system-ui,sans-serif";
+ document.body.className="ln-"+S.lines;
+ var w="";try{w=localStorage.getItem("pn-wall")||""}catch(e){}
+ document.body.style.backgroundImage=w?"url("+w+")":"none"}
+function sv(){try{localStorage.setItem("pn-set",JSON.stringify(S))}catch(e){}applyS();renderSet()}
+function chips(key,obj,lab){return Object.keys(obj).map(function(k){return '<button class="btn'+(S[key]==k?' p':'')+'" onclick="S.'+key+'=\''+k+'\';sv()">'+lab(k)+'</button>'}).join("")}
+function rmWall(){try{localStorage.removeItem("pn-wall")}catch(e){}applyS()}
+function wall(f){var im=new Image(),u=URL.createObjectURL(f);im.onload=function(){var s=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);try{localStorage.setItem("pn-wall",c.toDataURL("image/jpeg",0.7))}catch(e){alert("Wallpaper save nahi hua")}URL.revokeObjectURL(u);applyS();renderSet()};im.src=u}
+function renderSet(){setHead("Settings",true);
+ $("#app").innerHTML='<div class="wrap"><h3>Cover / Theme</h3>'+chips("theme",TH,function(k){return TN[k]})+'<h3>Page ka rang</h3>'+chips("page",PG,function(k){return PN[k]})+'<h3>Likhai ka rang</h3>'+chips("ink",INK,function(k){return INK[k][0]})+'<h3>Font</h3>'+chips("font",FN,function(k){return FN[k]})+'<h3>Page ki lines</h3>'+chips("lines",LN,function(k){return LN[k]})+'<h3>Wallpaper</h3><button class="btn" onclick="$(\'#wf\').click()">🖼 Gallery se</button><button class="btn d" onclick="rmWall()">Hatayen</button><input id="wf" type="file" accept="image/*" hidden><div class="note" style="margin-top:14px"><b>Namuna note</b><small>Aisa dikhega aap ka page</small></div></div>';
+ $("#wf").onchange=function(){if(this.files[0])wall(this.files[0])}}
+open().then(async function(d){DB=d;try{navigator.storage&&navigator.storage.persist()}catch(e){}await load();sel=today();applyS();render()}).catch(function(){$("#app").innerHTML='<div class="empty">Storage available nahi hai.</div>'});
+</script></body></html>
